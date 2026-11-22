@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>3 · Cosmic Night</title>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Manrope:wght@300;400;600&family=Cormorant+Garamond:ital,wght@1,400&display=swap" rel="stylesheet">
+<style>
+:root{--void:#0A0718;--deep:#140F2E;--violet:#2A1E5C;--orchid:#C77DFF;--gold:#E8C27A;--star:#F5F0FF;--mute:#A79FC7}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Manrope,sans-serif;font-weight:300;color:var(--star);background:var(--void);font-size:17px;line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.stars{position:fixed;inset:0;z-index:-1;background:
+radial-gradient(1px 1px at 10% 20%,#fff,transparent),radial-gradient(1px 1px at 30% 70%,#fff,transparent),radial-gradient(1.5px 1.5px at 55% 15%,#fff,transparent),radial-gradient(1px 1px at 75% 45%,#fff,transparent),radial-gradient(1px 1px at 90% 80%,#fff,transparent),radial-gradient(1.5px 1.5px at 20% 90%,#fff,transparent),radial-gradient(1px 1px at 65% 85%,#fff,transparent),radial-gradient(1px 1px at 42% 40%,#fff,transparent),radial-gradient(1px 1px at 85% 10%,#fff,transparent),radial-gradient(1px 1px at 5% 55%,#fff,transparent),
+radial-gradient(ellipse at 70% 10%,rgba(199,125,255,.18),transparent 50%),radial-gradient(ellipse at 10% 80%,rgba(232,194,122,.08),transparent 50%),var(--void);background-size:400px 400px,500px 500px,600px 600px,450px 450px,550px 550px,480px 480px,520px 520px,430px 430px,610px 610px,470px 470px,100% 100%,100% 100%,100% 100%}
+.bar{text-align:center;font-size:13px;padding:10px;letter-spacing:.1em;border-bottom:1px solid rgba(232,194,122,.2);color:var(--gold)}
+header{display:flex;justify-content:space-between;align-items:center;padding:24px 6vw}
+.logo{font-family:Italiana,serif;font-size:26px;letter-spacing:.08em}
+nav{display:flex;gap:28px;align-items:center;font-size:14px;letter-spacing:.06em;color:var(--mute)}
+nav a:hover{color:var(--star)}
+nav .hl{color:var(--gold)}
+.btn{display:inline-block;border-radius:40px;padding:14px 26px;font-weight:600;font-size:14px;letter-spacing:.05em}
+.btn.gold{background:linear-gradient(135deg,#F3D79B,#C9A24B);color:#1a1230}
+.btn.line{border:1px solid rgba(245,240,255,.35)}
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:center;padding:60px 6vw 120px;position:relative}
+.eyebrow{font-size:12px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold)}
+h1,.h2{font-family:Italiana,serif;font-weight:400}
+h1{font-size:clamp(52px,7.5vw,108px);line-height:.98;margin:22px 0}
+h1 i{font-family:"Cormorant Garamond",serif;color:var(--orchid)}
+.hero p{font-size:19px;color:var(--mute);max-width:540px}
+.cta{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+.portal{position:relative;aspect-ratio:1;max-width:520px;justify-self:center;width:100%}
+.portal img{position:absolute;inset:9%;width:82%;height:82%;object-fit:cover;object-position:center 25%;border-radius:50%}
+.portal svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 120s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* sky card */
+.sky{margin:-50px 6vw 0;position:relative;background:rgba(20,15,46,.75);backdrop-filter:blur(10px);border:1px solid rgba(232,194,122,.25);border-radius:28px;padding:34px 40px;display:grid;grid-template-columns:auto 1fr auto;gap:36px;align-items:center}
+.moon{width:84px;height:84px;border-radius:50%;background:#2b2450;position:relative;overflow:hidden;box-shadow:0 0 40px rgba(245,240,255,.15)}
+.moon i{position:absolute;inset:0;border-radius:50%;background:#F5F0FF}
+.sky h3{font-family:Italiana,serif;font-weight:400;font-size:30px}
+.sky p{color:var(--mute);font-size:15px}
+section{padding:120px 6vw}
+.h2{font-size:clamp(40px,5.5vw,72px);line-height:1;margin:16px 0 22px}
+.lede{color:var(--mute);font-size:19px;max-width:640px}
+.center{text-align:center}.center .lede{margin:0 auto}
+/* pillars */
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
+.p{border:1px solid rgba(167,159,199,.25);border-radius:200px 200px 28px 28px;padding:60px 32px 40px;text-align:center;background:linear-gradient(180deg,rgba(42,30,92,.5),rgba(10,7,24,0))}
+.p .glyph{font-size:44px;color:var(--gold);line-height:1}
+.p h3{font-family:Italiana,serif;font-weight:400;font-size:36px;margin:14px 0 10px;letter-spacing:.1em}
+.p p{color:var(--mute);font-size:15px}
+/* offers */
+.offers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:56px}
+.o{background:var(--deep);border:1px solid rgba(167,159,199,.2);border-radius:26px;padding:36px 30px;display:flex;flex-direction:column}
+.o small{font-size:11px;letter-spacing:.3em;color:var(--orchid)}
+.o h3{font-family:Italiana,serif;font-weight:400;font-size:32px;margin:12px 0 6px}
+.o .amt{font-size:40px;font-weight:300;color:var(--gold)}
+.o p{color:var(--mute);font-size:15px;margin:12px 0 26px;flex:1}
+.o.star{background:linear-gradient(160deg,#3a2580,#1a1240);border-color:var(--gold)}
+.note{text-align:center;margin-top:28px;color:var(--gold);font-family:"Cormorant Garamond",serif;font-style:italic;font-size:22px}
+/* launch */
+.launch{background:linear-gradient(120deg,rgba(199,125,255,.18),rgba(232,194,122,.12));border:1px solid rgba(232,194,122,.3);border-radius:36px;margin:0 6vw;padding:80px 6vw;display:grid;grid-template-columns:1.1fr 1fr;gap:50px;align-items:center}
+.orbit{list-style:none;display:grid;gap:14px}
+.orbit li{display:flex;gap:18px;align-items:baseline;border-bottom:1px solid rgba(245,240,255,.12);padding-bottom:12px}
+.orbit b{font-family:Italiana,serif;font-weight:400;font-size:28px;color:var(--gold);min-width:110px}
+.orbit span{color:var(--mute);font-size:15px}
+/* hd */
+.hd{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hd img{width:100%;border-radius:28px;filter:saturate(1.1)}
+.hdbtns{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+/* testimonials */
+.tq{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:50px}
+.tq blockquote{border-left:1px solid var(--gold);padding:6px 0 6px 24px;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:23px;line-height:1.35}
+.tq cite{display:block;font-family:Manrope;font-style:normal;font-size:13px;color:var(--mute);margin-top:12px;letter-spacing:.1em}
+/* music */
+.music{display:grid;grid-template-columns:auto 1fr;gap:50px;align-items:center;background:var(--deep);border-radius:36px;margin:0 6vw;padding:50px}
+.music img{width:260px;border-radius:20px}
+footer{padding:80px 6vw 50px;text-align:center;color:var(--mute);font-size:14px}
+footer .logo{color:var(--star);margin-bottom:14px}
+footer nav{justify-content:center;flex-wrap:wrap;margin:20px 0}
+@media(max-width:900px){nav a:not(.btn){display:none}.hero,.launch,.hd{grid-template-columns:1fr}.three,.offers,.tq{grid-template-columns:1fr}.sky{grid-template-columns:1fr;text-align:center}.moon{margin:0 auto}.music{grid-template-columns:1fr}.music img{width:100%}}
+</style>
+</head>
+<body>
+<div class="stars"></div>
+<div class="bar">✦ THE CREATIVE PLAYGROUND · 4TH MONDAYS · 7–8PM PST · <a href="https://www.eventbrite.com/e/the-creative-playground-tickets-1986926631040"><u>RSVP</u></a></div>
+<header>
+<a class="logo" href="#">JOYFUL PURPOSE</a>
+<nav><a href="#">About</a><a href="#">Human Design</a><a href="#">Music</a><a href="#">Shop</a><a class="hl" href="https://launchyoursoulscalling.com/">Launch Your Soul's Calling</a><a class="btn line" href="https://jcisit.github.io/cosmic-weather/">✦ Client Login</a></nav>
+</header>
+
+<section class="hero">
+<div>
+<div class="eyebrow">Subconscious Transmutation</div>
+<h1>Stop hiding your <i>medicine.</i></h1>
+<p>A 12-week initiation to dissolve procrastination and rewire your nervous system for a life of Joyful Purpose, through the alchemy of sound and soul.</p>
+<div class="cta"><a class="btn gold" href="https://calendly.com/astrafox/discoverycall">Book your discovery call</a><a class="btn line" href="#offers">Explore the journeys</a></div>
+</div>
+<div class="portal">
+<svg viewBox="0 0 200 200" fill="none" stroke="#E8C27A" stroke-width=".35" opacity=".8"><circle cx="100" cy="100" r="98"/><circle cx="100" cy="100" r="92" stroke-dasharray="1 3"/><polygon points="100,2 185,149 15,149"/><polygon points="100,198 15,51 185,51"/><circle cx="100" cy="2" r="2" fill="#E8C27A"/><circle cx="185" cy="149" r="1.5" fill="#E8C27A"/><circle cx="15" cy="51" r="1.5" fill="#E8C27A"/></svg>
+<img src="img/astra-home.webp" alt="Astra Fox">
+</div>
+</section>
+
+<div class="sky">
+<div class="moon"><i id="shade"></i></div>
+<div><div class="eyebrow">Today's Cosmic Weather</div><h3 id="phase">Waxing Crescent</h3><p id="msg">A seed moon. Name the one creative thing you're ready to plant.</p></div>
+<a class="btn gold" href="https://jcisit.github.io/cosmic-weather/">Open your daily sky →</a>
+</div>
+
+<section class="center">
+<div class="eyebrow">The method</div>
+<h2 class="h2">Soul · Science · Alchemy</h2>
+<p class="lede">Neuroscience meets spiritual wisdom. Every tool is research-backed, and every one was tested in the fire of Astra's own transformation.</p>
+<div class="three">
+<div class="p"><div class="glyph">☾</div><h3>SOUL</h3><p>Private initiation and Human Design integration. Align your energetic blueprint with daily reality and move to a focused, soul-led strategy.</p></div>
+<div class="p"><div class="glyph">✧</div><h3>SCIENCE</h3><p>NLP, MER® and hypnosis rewire the neural pathways and the biological "hide" reflex at the root of procrastination.</p></div>
+<div class="p"><div class="glyph">♫</div><h3>ALCHEMY</h3><p>A custom channeled Musical Mantra. A sonic soundscape for your nervous system that turns resistance into creative flow.</p></div>
+</div>
+</section>
+
+<section id="offers" class="center">
+<div class="eyebrow">Private journeys</div>
+<h2 class="h2">Choose your initiation.</h2>
+<div class="offers" style="text-align:left">
+<div class="o"><small>DEEP DIVE</small><h3>Breakthrough Intensive</h3><div class="amt">$1,000</div><p>One powerful session with an intro call before and an NLP integration session after. For the woman who knows the block and is ready to move it.</p><a class="btn line" href="https://calendly.com/astrafox/discoverycall">Begin</a></div>
+<div class="o star"><small>BEST VALUE · SAVE $300</small><h3>The Full Journey</h3><div class="amt">$4,000</div><p>The Breakthrough Intensive, 12 weeks of coaching and your Custom Musical Mantra, together. A $4,300 value.</p><a class="btn gold" href="https://calendly.com/astrafox/discoverycall">Begin</a></div>
+<div class="o"><small>MOST POPULAR</small><h3>12-Week 1:1 Coaching</h3><div class="amt">$2,800</div><p>Twelve 50-minute private sessions with NLP woven in. A full season of supported change, your design as the compass.</p><a class="btn line" href="https://calendly.com/astrafox/discoverycall">Begin</a></div>
+</div>
+<p class="note">Add a Custom Musical Mantra to any journey · $500</p>
+</section>
+
+<div class="launch">
+<div>
+<div class="eyebrow">Group program · Feb 4 – Apr 8, 2027</div>
+<h2 class="h2">Launch Your Soul's Calling</h2>
+<p class="lede">Ten weeks for wildly creative, spiritual women. The song, the oracle deck, the book you know you're meant to share. Stop dreaming it. Start living it.</p>
+<div class="cta"><a class="btn gold" href="https://launchyoursoulscalling.com/">Join the waitlist</a></div>
+</div>
+<ul class="orbit">
+<li><b>Soil</b><span>Your Creative Signature takes shape</span></li>
+<li><b>Seed</b><span>Plant your North Star Goal</span></li>
+<li><b>Roots</b><span>Council of Muses and your own Musical Mantra</span></li>
+<li><b>Sprout</b><span>Real action through the resistance</span></li>
+<li><b>Blossom</b><span>Launch it, with a Full Bloom Ceremony</span></li>
+</ul>
+</div>
+
+<section class="hd">
+<img src="img/astra-portrait.webp" alt="Astra Fox portrait">
+<div>
+<div class="eyebrow">Human Design</div>
+<h2 class="h2">A map to your authentic self.</h2>
+<p class="lede">Your Type, Strategy, Inner Authority and Profile, read with warmth and in plain language. You're the one living your life. Astra helps you read the map.</p>
+<div class="hdbtns"><a class="btn gold" href="https://calendly.com/astrafox/human-design">30-min reading</a><a class="btn line" href="https://calendly.com/astrafox/human-design-soul-strategy-advanced-reading">60-min advanced</a></div>
+<p style="color:var(--gold);margin-top:16px;font-size:14px">✦ Special: buy one, gift one half off</p>
+</div>
+</section>
+
+<div class="music">
+<img src="img/album-calling.webp" alt="Album art">
+<div>
+<div class="eyebrow">Music as medicine</div>
+<h2 class="h2" style="font-size:48px">My Own Medicine, out now.</h2>
+<p class="lede">Songs and Musical Mantras that raise your vibration and rewrite the beliefs underneath the block.</p>
+<div class="cta"><a class="btn gold" href="https://open.spotify.com/album/7DkC7wJwmvpe9KzK2PD7x6">▶ Listen on Spotify</a><a class="btn line" href="#">Book for your event</a></div>
+</div>
+</div>
+
+<section class="center">
+<div class="eyebrow">Testimony</div>
+<h2 class="h2">This is evidence.</h2>
+<div class="tq" style="text-align:left">
+<blockquote>"I did therapy for years and while that was amazing, this was a whole other level."<cite>ALIVIA A.</cite></blockquote>
+<blockquote>"Through her intuitive guidance I uncovered deep-seated blocks that kept me from my Joyful Purpose."<cite>JEANNINE S.</cite></blockquote>
+<blockquote>"I sing my Musical Mantra all the time and it brightens my spirit on this journey."<cite>KELLEY J.</cite></blockquote>
+</div>
+</section>
+
+<footer>
+<div class="logo">JOYFUL PURPOSE</div>
+<p>Astra Fox, PCC · Spiritual Life Coach · Creative Alchemist · Singer-Songwriter</p>
+<nav><a href="#">About</a><a href="#">Human Design</a><a href="#">Music</a><a href="#">Shop</a><a href="#">Contact</a><a href="https://launchyoursoulscalling.com/">Launch Your Soul's Calling</a><a href="https://jcisit.github.io/cosmic-weather/">Client Login</a></nav>
+<p>Instagram · Facebook · YouTube · LinkedIn · Spotify</p>
+</footer>
+<script>
+(function(){
+const syn=29.530588853,ref=Date.UTC(2000,0,6,18,14)/864e5;
+const age=((Date.now()/864e5-ref)%syn+syn)%syn,f=age/syn;
+const names=[[.03,"New Moon","Rest and listen. The whisper is loudest in the dark."],[.22,"Waxing Crescent","A seed moon. Name the one creative thing you're ready to plant."],[.28,"First Quarter","Meet the resistance. Take one brave step anyway."],[.47,"Waxing Gibbous","Refine and keep going. Momentum is building."],[.53,"Full Moon","Your work wants to be seen. Share something today."],[.72,"Waning Gibbous","Gratitude and integration. Notice how far you've come."],[.78,"Last Quarter","Release what no longer serves the calling."],[.97,"Waning Crescent","Surrender and rest before the next beginning."],[1,"New Moon","Rest and listen. The whisper is loudest in the dark."]];
+const n=names.find(x=>f<x[0]);document.getElementById('phase').textContent=n[1];document.getElementById('msg').textContent=n[2];
+const s=document.getElementById('shade');const lit=f<.5?f*2:(1-f)*2;
+s.style.transform=`translateX(${(f<.5?1:-1)*(1-lit)*100}%)`;
+})();
+</script>
+</body>
+</html>

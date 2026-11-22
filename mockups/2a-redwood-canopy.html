@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2A · Redwood Canopy</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--forest:#0F2A24;--moss:#1E4A3F;--teal:#0E5E5A;--berry:#B0267A;--pink:#F3B7DA;--gold:#D4A84F;--bone:#F4EFE6;--ink:#1A1A17;--line:#E3DACB}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Jost,sans-serif;font-weight:300;color:var(--ink);background:var(--bone);font-size:17px;line-height:1.65;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.eyebrow{font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:500;color:var(--teal)}
+.h2{font-family:Fraunces,serif;font-weight:300;font-size:clamp(38px,5vw,64px);line-height:1.04;margin:14px 0 20px}
+.h2 em{font-style:italic;color:var(--berry)}
+.lede{font-size:19px;max-width:620px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:15px 28px;border-radius:40px;font-weight:500;font-size:15px;transition:transform .2s,box-shadow .2s;white-space:nowrap}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.18)}
+.btn.g{background:var(--gold);color:var(--forest)}
+.btn.f{background:var(--forest);color:var(--bone)}
+.btn.o{border:1px solid currentColor}
+section{padding:120px 6vw}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* announcement + header */
+.bar{background:var(--forest);color:var(--bone);text-align:center;font-size:13.5px;padding:9px 16px;letter-spacing:.03em}
+.bar a{color:var(--gold);border-bottom:1px solid var(--gold)}
+header{position:fixed;left:0;right:0;top:38px;z-index:50;transition:background .35s,top .35s,box-shadow .35s}
+header.solid{top:0;background:rgba(15,42,36,.94);backdrop-filter:blur(10px);box-shadow:0 6px 30px rgba(0,0,0,.2)}
+.hin{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:30px;padding:20px 6vw;color:var(--bone)}
+header.solid .hin{padding:14px 6vw}
+.logo{font-family:Fraunces,serif;font-size:22px;line-height:1}
+.logo small{display:block;font-family:Jost;font-size:9.5px;letter-spacing:.38em;opacity:.75;margin-top:5px}
+.links{display:flex;justify-content:center;gap:34px;font-size:15px}
+.links a{position:relative;padding:4px 0}
+.links a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1px;background:var(--gold);transition:right .3s}
+.links a:hover::after{right:0}
+.links .soul{color:var(--gold)}
+.acts{display:flex;align-items:center;gap:22px;font-size:15px}
+.acts .login{display:flex;align-items:center;gap:7px;opacity:.9}
+.acts .btn{padding:11px 22px}
+.burger{display:none;background:none;border:0;color:inherit;cursor:pointer;width:44px;height:44px}
+.burger span{display:block;height:1.5px;background:currentColor;margin:6px 10px;transition:.3s}
+.drawer{position:fixed;inset:0;z-index:60;background:var(--forest);color:var(--bone);padding:100px 8vw 40px;display:flex;flex-direction:column;gap:6px;transform:translateY(-100%);transition:transform .45s ease}
+.drawer.open{transform:none}
+.drawer a{font-family:Fraunces,serif;font-size:34px;font-weight:300;padding:8px 0;border-bottom:1px solid rgba(244,239,230,.12)}
+.drawer .btn{font-family:Jost;font-size:16px;margin-top:20px;justify-content:center;border:0}
+.drawer .x{position:absolute;top:24px;right:6vw;background:none;border:0;color:inherit;font-size:30px;cursor:pointer}
+
+/* hero: Astra left, words right */
+.hero{position:relative;min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;color:var(--bone);background:var(--forest);overflow:hidden}
+.hero .photo{position:absolute;inset:0;background:url(img/music1.webp) 18% 30%/cover;transform:scale(1.08);animation:drift 22s ease-in-out infinite alternate}
+@keyframes drift{to{transform:scale(1.15) translate(1.5%,-1%)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,42,36,0) 0%,rgba(15,42,36,.15) 32%,rgba(15,42,36,.82) 55%,rgba(15,42,36,.96) 100%),linear-gradient(0deg,rgba(15,42,36,.7),transparent 30%),linear-gradient(180deg,rgba(15,42,36,.75),transparent 26%)}
+.hero .txt{grid-column:2;position:relative;z-index:2;padding:160px 6vw 120px 2vw;max-width:640px}
+.hero .eyebrow{color:var(--gold)}
+.hero h1{font-family:Fraunces,serif;font-weight:300;font-size:clamp(52px,6.6vw,104px);line-height:.95;margin:22px 0 26px;letter-spacing:-.01em}
+.hero h1 em{font-style:italic;color:var(--pink)}
+.hero p{font-size:20px;opacity:.9;max-width:520px}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.event{position:absolute;z-index:3;left:6vw;bottom:48px;display:flex;align-items:center;gap:16px;background:rgba(244,239,230,.12);backdrop-filter:blur(12px);border:1px solid rgba(244,239,230,.25);border-radius:18px;padding:14px 22px 14px 14px;font-size:14px;max-width:360px}
+.event .d{background:var(--gold);color:var(--forest);border-radius:12px;padding:8px 12px;text-align:center;font-weight:500;line-height:1.1}
+.event .d b{display:block;font-family:Fraunces;font-size:20px;font-weight:400}
+.scroll{position:absolute;z-index:3;right:6vw;bottom:48px;font-size:12px;letter-spacing:.3em;opacity:.7;writing-mode:vertical-rl}
+
+/* proof strip */
+.proof{background:var(--forest);color:var(--bone);display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:46px 6vw;border-top:1px solid rgba(212,168,79,.25)}
+.proof div{border-left:1px solid rgba(212,168,79,.35);padding-left:20px}
+.proof b{display:block;font-family:Fraunces,serif;font-weight:300;font-size:36px;color:var(--gold);line-height:1.1}
+.proof span{font-size:14px;opacity:.8}
+
+/* paths */
+.paths{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:56px}
+.path{position:relative;border-radius:24px;overflow:hidden;min-height:430px;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;color:var(--bone);background-size:cover;background-position:center;isolation:isolate;transition:transform .35s}
+.path::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(15,42,36,.95) 15%,rgba(15,42,36,.15) 70%);transition:background .35s}
+.path:hover{transform:translateY(-6px)}
+.path:hover::before{background:linear-gradient(0deg,rgba(15,42,36,.97) 30%,rgba(15,42,36,.4))}
+.path .k{font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.path h3{font-family:Fraunces,serif;font-weight:300;font-size:30px;line-height:1.05;margin:10px 0}
+.path p{font-size:15px;opacity:.85}
+.path .go{margin-top:16px;font-weight:500;color:var(--pink)}
+
+/* pillars */
+.pillars{background:var(--forest);color:var(--bone);display:grid;grid-template-columns:1fr 1.25fr;gap:80px;align-items:center;position:relative;overflow:hidden}
+.pillars .eyebrow{color:var(--gold)}
+.pillars .h2 em{color:var(--pink)}
+.arch{position:relative}
+.arch img{width:100%;border-radius:999px 999px 28px 28px;aspect-ratio:3/4;object-fit:cover;object-position:center 20%}
+.arch::before{content:"";position:absolute;inset:-16px;border:1px solid rgba(212,168,79,.5);border-radius:999px 999px 36px 36px}
+.pl{display:grid;gap:8px;margin-top:20px}
+.pl div{display:grid;grid-template-columns:90px 1fr;gap:20px;border-top:1px solid rgba(244,239,230,.15);padding:26px 0}
+.pl h3{font-family:Fraunces,serif;font-style:italic;font-weight:300;font-size:30px;color:var(--gold)}
+.fern{position:absolute;right:-60px;bottom:-40px;width:340px;opacity:.08}
+
+/* pricing */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:56px;align-items:stretch}
+.card{border-radius:26px;padding:40px 32px;background:#fff;border:1px solid var(--line);display:flex;flex-direction:column}
+.card .tag{font-size:11.5px;letter-spacing:.24em;color:var(--teal);text-transform:uppercase;font-weight:500}
+.card h3{font-family:Fraunces,serif;font-weight:400;font-size:30px;margin:12px 0 4px}
+.card .amt{font-family:Fraunces,serif;font-size:50px;font-weight:300;color:var(--berry)}
+.card ul{list-style:none;margin:18px 0 28px;flex:1;font-size:15.5px}
+.card li{padding:8px 0 8px 26px;border-bottom:1px solid var(--line);position:relative}
+.card li::before{content:"✦";position:absolute;left:0;color:var(--gold);font-size:13px;top:10px}
+.card .btn{justify-content:center}
+.card.best{background:var(--moss);color:var(--bone);border:0;box-shadow:0 30px 60px rgba(15,42,36,.3);transform:translateY(-14px)}
+.card.best .tag{color:var(--gold)}.card.best .amt{color:var(--pink)}
+.card.best li{border-color:rgba(244,239,230,.15)}
+.addon{margin:34px auto 0;max-width:640px;text-align:center;border:1px dashed var(--gold);border-radius:20px;padding:18px;font-family:Fraunces,serif;font-style:italic;font-size:21px}
+
+/* launch */
+.launch{position:relative;margin:0 6vw;border-radius:36px;overflow:hidden;color:#fff;background:linear-gradient(120deg,rgba(59,15,51,.96),rgba(110,27,85,.9) 55%,rgba(176,38,122,.85)),url(img/music2.webp) center/cover;padding:90px 6vw}
+.launch .eyebrow{color:var(--pink)}
+.launch .h2 em{color:var(--pink)}
+.phases{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;margin:46px 0;position:relative}
+.phases::before{content:"";position:absolute;left:4%;right:4%;top:23px;height:1px;background:rgba(255,255,255,.35)}
+.phases div{position:relative;padding:0 14px;font-size:14.5px;text-align:center}
+.phases i{display:grid;place-items:center;width:46px;height:46px;margin:0 auto 14px;border-radius:50%;background:#fff;color:#6E1B55;font-style:normal;font-size:18px;position:relative}
+.phases b{display:block;font-family:Fraunces,serif;font-weight:400;font-size:24px;margin-bottom:4px}
+
+/* about */
+.about{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center}
+.about .stack{position:relative}
+.about .stack img{width:100%;border-radius:26px;display:block}
+.about .stack img+img{position:absolute;width:48%;right:-28px;bottom:-40px;border:8px solid var(--bone);border-radius:20px}
+.creds{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.creds span{font-size:13px;border:1px solid #cfc6b6;border-radius:30px;padding:6px 14px}
+.quote{font-family:Fraunces,serif;font-style:italic;font-weight:300;font-size:26px;line-height:1.3;border-left:2px solid var(--gold);padding-left:22px;margin:28px 0}
+
+/* testimonials slider */
+.tests{background:#EAE3D6;text-align:center}
+.slider{position:relative;max-width:900px;margin:40px auto 0;min-height:250px}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .8s;pointer-events:none}
+.slide.on{opacity:1;pointer-events:auto}
+.slide p{font-family:Fraunces,serif;font-weight:300;font-size:clamp(26px,3.2vw,40px);line-height:1.25}
+.slide span{display:block;margin-top:22px;font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:var(--teal)}
+.dots{display:flex;gap:10px;justify-content:center;margin-top:20px}
+.dots button{width:10px;height:10px;border-radius:50%;border:0;background:#c9bfae;cursor:pointer}
+.dots button.on{background:var(--berry);width:28px;border-radius:10px}
+
+/* music */
+.music{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.music .vis{position:relative}
+.music .vis img{width:100%;border-radius:26px;aspect-ratio:4/5;object-fit:cover}
+.music .vis .rec{position:absolute;right:-30px;bottom:30px;width:180px;border-radius:50%;box-shadow:0 20px 40px rgba(0,0,0,.3);animation:spin 14s linear infinite;border:6px solid #111}
+@keyframes spin{to{transform:rotate(360deg)}}
+.plats{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+
+/* app + footer */
+.app{margin:0 6vw 110px;border-radius:32px;background:var(--forest);color:var(--bone);padding:56px 6vw;display:grid;grid-template-columns:1.4fr auto;gap:30px;align-items:center;position:relative;overflow:hidden}
+.app .eyebrow{color:var(--gold)}
+.app .moon{position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff7e0,#d9c48e 60%,transparent 61%);opacity:.18}
+footer{background:#0A1C18;color:#bfc9c4;padding:70px 6vw 40px;font-size:15px}
+.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}
+footer h4{color:var(--gold);font-weight:500;margin-bottom:12px;font-size:12px;letter-spacing:.24em}
+footer a{display:block;margin-bottom:7px}
+footer a:hover{color:var(--bone)}
+.legal{border-top:1px solid rgba(255,255,255,.08);margin-top:50px;padding-top:24px;font-size:13px;opacity:.6}
+
+@media(max-width:1150px){.links,.acts .login{display:none}.burger{display:block}}
+@media(max-width:900px){
+ .hero{grid-template-columns:1fr;min-height:auto}
+ .hero .photo{position:relative;height:62vh;transform:none;animation:none;background-position:22% 30%}
+ .hero::after{background:linear-gradient(0deg,var(--forest) 30%,rgba(15,42,36,0) 42%),linear-gradient(180deg,rgba(15,42,36,.8),transparent 14%)}
+ .hero .txt{grid-column:1;padding:0 6vw 60px;margin-top:24px}
+ .event{position:relative;left:auto;bottom:auto;margin:0 6vw 40px;z-index:3}
+ .scroll{display:none}
+ .proof{grid-template-columns:1fr 1fr}
+ .paths{grid-template-columns:1fr 1fr}.cards,.phases{grid-template-columns:1fr}
+ .phases::before{display:none}.phases div{text-align:left;display:grid;grid-template-columns:46px 1fr;gap:16px;padding:10px 0}.phases i{margin:0}
+ .card.best{transform:none}
+ .pillars,.about,.music,.app{grid-template-columns:1fr}
+ .about .stack img+img{right:10px}
+ .music .vis .rec{right:10px;width:130px}
+ .music{overflow:hidden}
+ .fgrid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){.hide-s{display:none}.paths{grid-template-columns:1fr}.path{min-height:340px}.pl div{grid-template-columns:1fr;gap:4px}.acts .btn{display:none}}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="bar">🌿 The Creative Playground<span class="hide-s"> · 4th Mondays · 7–8pm PST</span> · <a href="https://www.eventbrite.com/e/the-creative-playground-tickets-1986926631040">Save your seat</a></div>
+
+<header id="hdr"><div class="hin">
+<a class="logo" href="#">Joyful Purpose Coaching<small>ASTRA FOX</small></a>
+<nav class="links"><a href="#">About</a><a href="#">Human Design</a><a href="#music">Music</a><a href="#">Shop</a><a class="soul" href="https://launchyoursoulscalling.com/">Soul's Calling</a></nav>
+<div class="acts">
+<a class="login" href="https://jcisit.github.io/cosmic-weather/"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>Client Login</a>
+<a class="btn g" href="https://calendly.com/astrafox/discoverycall">Book a Call</a>
+<button class="burger" aria-label="Menu" onclick="drawer.classList.add('open')"><span></span><span></span><span></span></button>
+</div>
+</div></header>
+<div class="drawer" id="drawer">
+<button class="x" onclick="drawer.classList.remove('open')" aria-label="Close">×</button>
+<a href="#">About Astra</a><a href="#">Human Design</a><a href="#music">Music</a><a href="#">Shop</a><a href="https://launchyoursoulscalling.com/">Launch Your Soul's Calling</a><a href="https://jcisit.github.io/cosmic-weather/">Client Login</a>
+<a class="btn g" href="https://calendly.com/astrafox/discoverycall">Book your free discovery call</a>
+</div>
+
+<section class="hero" style="padding:0">
+<div class="photo" role="img" aria-label="Astra Fox with her guitar in the redwoods"></div>
+<div class="txt">
+<div class="eyebrow">Soul · Science · Alchemy</div>
+<h1>Stop hiding your <em>medicine.</em></h1>
+<p>Answer the whisper. Dissolve the procrastination, rewire the "hide" reflex, and start living the calling you already hear.</p>
+<div class="cta"><a class="btn g" href="https://calendly.com/astrafox/discoverycall">Book your free discovery call</a><a class="btn o" href="#paths">Find your path</a></div>
+</div>
+<a class="event" href="https://www.eventbrite.com/e/the-creative-playground-tickets-1986926631040"><span class="d">4th<b>MON</b></span><span><b style="font-weight:500">The Creative Playground</b><br>Monthly online circle · 7–8pm PST →</span></a>
+<div class="scroll">SCROLL ↓</div>
+</section>
+
+<div class="proof">
+<div><b>PCC</b><span>ICF credential held by under 7% of coaches</span></div>
+<div><b>17+ yrs</b><span>Singer-songwriter and performer</span></div>
+<div><b>2 albums</b><span>The Calling and My Own Medicine</span></div>
+<div><b>NLP · MER® · HD</b><span>Master Practitioner and Human Design Guide</span></div>
+</div>
+
+<section id="paths">
+<div class="reveal">
+<div class="eyebrow">Where are you on the path?</div>
+<h2 class="h2">Four ways to <em>begin.</em></h2>
+<p class="lede">Every doorway leads to the same place: your creativity flowing, your purpose clear, and showing up fully without the struggle.</p>
+</div>
+<div class="paths reveal">
+<a class="path" style="background-image:url(img/astra-home.webp)" href="#coaching"><span class="k">Private · 12 weeks</span><h3>1:1 Coaching Journey</h3><p>Deep, steady change with your Human Design as the compass.</p><span class="go">See packages →</span></a>
+<a class="path" style="background-image:url(img/music2.webp)" href="https://launchyoursoulscalling.com/"><span class="k">Group · Starts Feb 4</span><h3>Launch Your Soul's Calling</h3><p>10 weeks with a circle of spiritual creatives.</p><span class="go">Join the waitlist →</span></a>
+<a class="path" style="background-image:url(img/astra-portrait.webp)" href="https://calendly.com/astrafox/human-design"><span class="k">Reading · 30 or 60 min</span><h3>Human Design Reading</h3><p>A map to your authentic self, in plain language.</p><span class="go">Book a reading →</span></a>
+<a class="path" style="background-image:url(img/music3.webp)" href="#music"><span class="k">Sound · $500</span><h3>Custom Musical Mantra</h3><p>A song written for you, to rewire the block.</p><span class="go">Hear the music →</span></a>
+</div>
+</section>
+
+<section class="pillars">
+<div class="arch reveal"><img src="img/astra-home.webp" alt="Astra Fox among the redwoods"></div>
+<div class="reveal">
+<div class="eyebrow">How the work works</div>
+<h2 class="h2">Neuroscience meets <em>spiritual wisdom.</em></h2>
+<div class="pl">
+<div><h3>Soul</h3><p>Private initiation plus Human Design integration. Align your energetic blueprint with your daily reality and move to a focused, soul-led strategy.</p></div>
+<div><h3>Science</h3><p>NLP, MER® and hypnosis for deep neural-pathway rewiring, right at the biological "hide" reflex behind procrastination.</p></div>
+<div><h3>Alchemy</h3><p>A custom channeled Musical Mantra: a soundscape for your nervous system that turns resistance into creative flow.</p></div>
+</div>
+</div>
+<svg class="fern" viewBox="0 0 100 200" fill="#F4EFE6"><path d="M50 200C50 120 50 60 50 0" stroke="#F4EFE6" stroke-width="2"/><g id="l"><ellipse cx="35" cy="30" rx="16" ry="5" transform="rotate(-30 35 30)"/><ellipse cx="32" cy="55" rx="19" ry="6" transform="rotate(-30 32 55)"/><ellipse cx="30" cy="82" rx="22" ry="6" transform="rotate(-30 30 82)"/><ellipse cx="28" cy="110" rx="24" ry="7" transform="rotate(-30 28 110)"/><ellipse cx="27" cy="140" rx="25" ry="7" transform="rotate(-30 27 140)"/></g><use href="#l" transform="matrix(-1 0 0 1 100 0)"/></svg>
+</section>
+
+<section id="coaching">
+<div class="reveal" style="text-align:center"><div class="eyebrow">Private coaching</div><h2 class="h2">Choose your <em>journey.</em></h2></div>
+<div class="cards reveal">
+<div class="card"><span class="tag">Deep dive</span><h3>Breakthrough Intensive</h3><div class="amt">$1,000</div><ul><li>Intro call before</li><li>One deep subconscious breakthrough session</li><li>NLP integration session after</li><li>Your Human Design woven through</li></ul><a class="btn f" href="https://calendly.com/astrafox/discoverycall">Start with a call</a></div>
+<div class="card best"><span class="tag">Best value · save $300</span><h3>The Full Journey</h3><div class="amt">$4,000</div><ul><li>The Breakthrough Intensive</li><li>12 weeks of 1:1 coaching</li><li>Your Custom Musical Mantra</li><li>A $4,300 value</li></ul><a class="btn g" href="https://calendly.com/astrafox/discoverycall">Start with a call</a></div>
+<div class="card"><span class="tag">Most popular</span><h3>12-Week 1:1 Coaching</h3><div class="amt">$2,800</div><ul><li>Twelve 50-minute private sessions</li><li>NLP woven in</li><li>A full season of supported change</li><li>Your design as the compass</li></ul><a class="btn f" href="https://calendly.com/astrafox/discoverycall">Start with a call</a></div>
+</div>
+<p class="addon reveal">Add a Custom Musical Mantra to any package · $500</p>
+</section>
+
+<div class="launch reveal">
+<div class="eyebrow">10-week group program · Feb 4 – Apr 8, 2027</div>
+<h2 class="h2">Launch Your Soul's <em>Calling.</em></h2>
+<p class="lede">For wildly creative, spiritual women who've been putting it off. The song, the oracle deck, the book. Stop dreaming it. Start living it.</p>
+<div class="phases">
+<div><i>✿</i><span><b>Soil</b>Your Creative Signature takes shape.</span></div>
+<div><i>❀</i><span><b>Seed</b>Plant your North Star Goal.</span></div>
+<div><i>❦</i><span><b>Roots</b>Council of Muses and your Musical Mantra.</span></div>
+<div><i>☘</i><span><b>Sprout</b>Real action through the resistance.</span></div>
+<div><i>✾</i><span><b>Blossom</b>Launch it. Full Bloom Ceremony.</span></div>
+</div>
+<a class="btn g" href="https://launchyoursoulscalling.com/">Join the waitlist</a>
+</div>
+
+<section class="about">
+<div class="reveal">
+<div class="eyebrow">Meet your guide</div>
+<h2 class="h2">Hi, I'm Astra. Your creativity is your <em>medicine.</em></h2>
+<p class="lede">I became a widow at 20 and chose to make my life amazing. Music became my medicine, and I found the tools that made it possible. Now I help spiritual creatives dissolve the invisible blocks between them and their calling.</p>
+<p class="quote">"Everything I teach, I have lived. Everything I sing, I have embodied."</p>
+<div class="creds"><span>PCC · ICF</span><span>Certified Spiritual Life Coach</span><span>NLP Master Practitioner</span><span>MER® &amp; Hypnosis</span><span>Human Design Guide</span></div>
+<div style="margin-top:30px"><a class="btn f" href="#">Read my story</a></div>
+</div>
+<div class="stack reveal"><img src="img/astra-about1.webp" alt="Astra holding her guitar overhead"><img src="img/performing.webp" alt="Astra performing"></div>
+</section>
+
+<section class="tests">
+<div class="eyebrow">In their words</div>
+<div class="slider" id="slider">
+<div class="slide on"><p>"I did therapy for years and while that was amazing, this was a whole other level."</p><span>Alivia A. · Breakthrough Session</span></div>
+<div class="slide"><p>"She has helped me move through so many subconscious roadblocks, in such a short amount of time!"</p><span>Marci H. · 1:1 Coaching</span></div>
+<div class="slide"><p>"The song is beautiful and brought tears to my eyes. I felt so seen and understood."</p><span>Sarah I. · Musical Mantra</span></div>
+<div class="slide"><p>"I walked away with greater clarity, emotional freedom, and a renewed sense of alignment."</p><span>Jeannine S. · 12-Week Coaching</span></div>
+</div>
+<div class="dots" id="dots"></div>
+</section>
+
+<section class="music" id="music">
+<div class="vis reveal"><img src="img/music3.webp" alt="Astra performing in the forest"><img class="rec" src="img/album-calling.webp" alt="Album art"></div>
+<div class="reveal">
+<div class="eyebrow">Music as medicine</div>
+<h2 class="h2">My Own Medicine, <em>out now.</em></h2>
+<p class="lede">Songs that raise your vibration, plus Musical Mantras: living affirmations written with NLP language patterns to rewrite the beliefs underneath the block.</p>
+<div class="plats"><a class="btn f" href="https://open.spotify.com/album/7DkC7wJwmvpe9KzK2PD7x6">▶ Spotify</a><a class="btn o" href="https://music.apple.com/us/album/the-calling/1127671157">Apple Music</a><a class="btn o" href="https://soundcloud.com/joyfullyastrafox">SoundCloud</a></div>
+<p style="margin-top:22px;font-size:15px">Booking sacred song for weddings, celebrations of life, blessingways and retreats. <a href="#" style="color:var(--berry);font-weight:500">Inquire →</a></p>
+</div>
+</section>
+
+<div class="app reveal">
+<div class="moon"></div>
+<div><div class="eyebrow">For clients</div><h2 class="h2" style="margin-bottom:8px">Your daily Cosmic Weather.</h2><p>Moon phase, your Human Design gates, a journal prompt and your session notes, every morning.</p></div>
+<a class="btn g" href="https://jcisit.github.io/cosmic-weather/">Client Login →</a>
+</div>
+
+<footer>
+<div class="fgrid">
+<div><div class="logo" style="color:var(--bone)">Joyful Purpose Coaching<small>ASTRA FOX</small></div><p style="margin-top:16px;max-width:300px">Soul, science and alchemy for spiritual creatives ready to stop hiding their medicine.</p></div>
+<div><h4>WORK WITH ME</h4><a href="#coaching">1:1 Coaching</a><a href="https://launchyoursoulscalling.com/">Launch Your Soul's Calling</a><a href="#">Human Design</a><a href="#music">Musical Mantras</a></div>
+<div><h4>EXPLORE</h4><a href="#">About Astra</a><a href="#music">Music</a><a href="#">Shop</a><a href="#">Contact</a><a href="https://jcisit.github.io/cosmic-weather/">Client Login</a></div>
+<div><h4>FOLLOW</h4><a href="https://www.instagram.com/joyfulpurposecoaching/">Instagram</a><a href="https://www.facebook.com/joyfulpurposecoaching/">Facebook</a><a href="https://www.youtube.com/@joyfulpurposecoaching">YouTube</a><a href="https://www.linkedin.com/in/astra-fox/">LinkedIn</a><a href="https://open.spotify.com/album/7DkC7wJwmvpe9KzK2PD7x6">Spotify</a></div>
+</div>
+<div class="legal">© Joyful Purpose Coaching · Astra Fox, PCC</div>
+</footer>
+
+<script>
+const hdr=document.getElementById('hdr');addEventListener('scroll',()=>hdr.classList.toggle('solid',scrollY>40),{passive:true});
+document.querySelectorAll('.drawer a').forEach(a=>a.onclick=()=>drawer.classList.remove('open'));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const slides=[...document.querySelectorAll('.slide')],dots=document.getElementById('dots');let cur=0;
+slides.forEach((_,i)=>{const b=document.createElement('button');b.setAttribute('aria-label','Testimonial '+(i+1));b.onclick=()=>go(i);dots.appendChild(b)});
+function go(i){slides[cur].classList.remove('on');dots.children[cur].classList.remove('on');cur=i;slides[cur].classList.add('on');dots.children[cur].classList.add('on')}
+go(0);setInterval(()=>go((cur+1)%slides.length),6500);
+</script>
+</body>
+</html>

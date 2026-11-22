@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Astra Mockups</title>
+<style>
+*{box-sizing:border-box;margin:0}
+body{font-family:system-ui,sans-serif;background:#16121c;color:#eee;height:100vh;display:flex;flex-direction:column}
+.tabs{display:flex;gap:6px;padding:10px;flex-wrap:wrap;align-items:center}
+.tabs b{margin-right:10px;font-weight:600}
+.tabs button{font:inherit;font-size:14px;background:#2a2433;color:#ddd;border:0;border-radius:20px;padding:8px 16px;cursor:pointer}
+.tabs button.on{background:#C9A24B;color:#16121c;font-weight:600}
+.tabs a{margin-left:auto;color:#aaa;font-size:13px}
+iframe{flex:1;border:0;width:100%;background:#fff}
+</style>
+</head>
+<body>
+<div class="tabs" id="t">
+<b>Astra mockups</b>
+<button data-f="1-current.html">1 · Current</button>
+<button data-f="2a-redwood-canopy.html" class="on">2A · Redwood Canopy</button>
+<button data-f="2b-redwood-grove.html">2B · Redwood Grove</button>
+<button data-f="2-redwood.html">2 · Redwood (first try)</button>
+<button data-f="3-cosmic.html">3 · Cosmic Night</button>
+<button data-f="4-editorial.html">4 · Bloom Editorial</button>
+<button data-f="5-sound.html">5 · Sound &amp; Soul</button>
+<a id="open" href="2a-redwood-canopy.html" target="_blank">open full ↗</a>
+</div>
+<iframe id="f" src="2a-redwood-canopy.html"></iframe>
+<script>
+document.querySelectorAll('#t button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#t button').forEach(x=>x.classList.remove('on'));b.classList.add('on');f.src=b.dataset.f;open.href=b.dataset.f;});
+</script>
+</body>
+</html>
