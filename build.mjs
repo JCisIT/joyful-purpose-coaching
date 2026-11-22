@@ -5,6 +5,8 @@ import { readFileSync, writeFileSync, readdirSync, mkdirSync, rmSync, cpSync } f
 const APP = 'https://app.joyfulpurposecoaching.com/';
 const CALL = 'https://calendly.com/astrafox/discoverycall';
 const SOUL = 'https://launchyoursoulscalling.com/';
+const SITE = 'https://www.joyfulpurposecoaching.com/';
+const GA = 'G-P3GD95EBVY'; // her existing Google Analytics property
 const PLAY = 'https://www.eventbrite.com/e/the-creative-playground-tickets-1986926631040';
 
 const nav = [
@@ -14,7 +16,7 @@ const nav = [
   ['shop.html', 'Shop', 'shop'],
 ];
 
-const layout = ({ title, desc, slug, body }) => `<!doctype html>
+const layout = ({ title, desc, slug, body, noindex }) => `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -23,16 +25,25 @@ const layout = ({ title, desc, slug, body }) => `<!doctype html>
 <meta name="description" content="${desc}">
 <meta property="og:title" content="${title}">
 <meta property="og:description" content="${desc}">
-<meta property="og:image" content="img/music1.webp">
+${noindex ? `<meta name="robots" content="noindex">
+<base href="/">` : `<link rel="canonical" href="${SITE}${slug === 'index' ? '' : slug + '.html'}">
+<meta property="og:url" content="${SITE}${slug === 'index' ? '' : slug + '.html'}">`}
+<meta property="og:site_name" content="Joyful Purpose Coaching">
+<meta property="og:image" content="${SITE}img/music1.webp">
 <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0F2A24">
 <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/site.css">
 <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=${GA}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${GA}');</script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div class="grain"></div>
 <div class="bar">🌿 The Creative Playground<span class="hide-s"> · 4th Mondays · 7–8pm PST</span> · <a href="${PLAY}" target="_blank" rel="noopener">Save your seat</a></div>
 
@@ -51,7 +62,7 @@ const layout = ({ title, desc, slug, body }) => `<!doctype html>
 <a class="btn g" href="${CALL}" data-calendly>Book your free discovery call</a>
 </div>
 
-<main>
+<main id="main">
 ${body}
 </main>
 
@@ -86,7 +97,22 @@ for (const f of readdirSync('src/pages')) {
   writeFileSync(`dist/${f}`, layout({ ...meta, slug: f.replace('.html', ''), body }));
 }
 
-// Old Squarespace address keeps working.
+// Old Squarespace addresses keep working.
 writeFileSync('dist/aboutastra.html', redirect('about.html'));
+writeFileSync('dist/oldhome.html', redirect('./'));
+writeFileSync('dist/home.html', redirect('./'));
+writeFileSync('dist/cart.html', redirect('shop.html'));
+
+// For search engines.
+const pages = readdirSync('src/pages').filter((f) => f !== '404.html').map((f) => (f === 'index.html' ? '' : f));
+writeFileSync('dist/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${pages.map((p) => `<url><loc>${SITE}${p}</loc></url>`).join('\n')}
+</urlset>
+`);
+writeFileSync('dist/robots.txt', `User-agent: *
+Allow: /
+Sitemap: ${SITE}sitemap.xml
+`);
 writeFileSync('dist/.nojekyll', '');
 console.log('Built', readdirSync('dist').filter((f) => f.endsWith('.html')).join(', '));
