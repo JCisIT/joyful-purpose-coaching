@@ -26,7 +26,7 @@ Every push to `main` builds and publishes to GitHub Pages through `.github/workf
 - **Booking**: Calendly pop-ups (`calendly.com/astrafox/...`).
 - **Client Login**: the Cosmic Weather app (`cosmic-weather` repo).
 - **Contact form**: saves to the `contact_messages` table in the `cosmic-weather` Supabase project. Visitors can send; only admins can read.
-- **Shop**: product buttons still open the Squarespace store. Replace these links before cancelling Squarespace.
+- **Shop**: product buttons open the Squarespace store at its built-in address (`cobalt-spinach-m52l.squarespace.com`), which keeps working after the domain moves. Replace these links before cancelling Squarespace.
 
 ## Still to do
 
