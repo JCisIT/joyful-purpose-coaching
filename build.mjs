@@ -2,7 +2,7 @@
 // Run: node build.mjs
 import { readFileSync, writeFileSync, readdirSync, mkdirSync, rmSync, cpSync } from 'node:fs';
 
-const APP = 'https://jcisit.github.io/cosmic-weather/';
+const APP = 'https://app.joyfulpurposecoaching.com/';
 const CALL = 'https://calendly.com/astrafox/discoverycall';
 const SOUL = 'https://launchyoursoulscalling.com/';
 const PLAY = 'https://www.eventbrite.com/e/the-creative-playground-tickets-1986926631040';

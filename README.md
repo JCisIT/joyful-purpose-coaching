@@ -19,7 +19,7 @@ This writes the finished site to `dist/`. Open `dist/index.html`, or serve the f
 
 ## How it goes live
 
-Every push to `main` builds and publishes to GitHub Pages through `.github/workflows/deploy.yml`.
+Every push to `main` builds and publishes to GitHub Pages through `.github/workflows/deploy.yml`. Live at `www.joyfulpurposecoaching.com`; the app is at `app.joyfulpurposecoaching.com`. DNS is managed in Squarespace Domains.
 
 ## What it connects to
 
@@ -32,6 +32,6 @@ Every push to `main` builds and publishes to GitHub Pages through `.github/workf
 
 1. Email Astra when a contact message arrives (they are only stored for now).
 2. Move the shop off Squarespace (Stripe payment links).
-3. Point `joyfulpurposecoaching.com` here and `app.` at Cosmic Weather, then update the Client Login link in `build.mjs`.
+3. Cancel the Squarespace website plan once the shop has moved (keep the domain registration).
 
 `mockups/` holds the early design options and is not part of the live site.
